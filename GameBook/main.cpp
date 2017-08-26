@@ -9,6 +9,8 @@ std::vector<std::string> Script;
 //スクリプト読込関数
 void ScriptRead(int root) {
 
+	Script.clear();
+
 	const char* Root[] = {
 		"STR/Main.txt", "STR/A.txt", 
 		"STR/B.txt", "STR/C.txt", 
@@ -41,7 +43,7 @@ void ChoiceDraw(int root) {
 }
 
 //スクリプト描画関数
-void ScriptDraw(int root) {
+int ScriptDraw(int root) {
 
 	int RootChoice;
 
@@ -51,10 +53,18 @@ void ScriptDraw(int root) {
 			system("cls");
 			ChoiceDraw(root);
 			std::cin >> RootChoice;
+
+			if (RootChoice == 1) {
+				root *= 2;
+				return root;
+			} else {
+				root *= 2 + 1;
+				return root;
+			}
 		}
 
 		if (s == "END")
-			break;
+			return root = 99;
 
 		std::cout << s << std::endl;
 		getchar();
@@ -65,9 +75,15 @@ int main() {
 
 	int root = 1;
 
-	ScriptRead(root);
+	while (root != 99) {
 
-	ScriptDraw(root);
+		ScriptRead(root);
+
+		root = ScriptDraw(root);
+
+		if (root == 99)
+			break;
+	}
 
 	return 0;
 }
