@@ -9,10 +9,10 @@ std::vector<std::string> Script;
 void ScriptRead(int root) {
 
 	const char* Root[] = {
-		"Main.txt", "A.txt", 
-		"B.txt", "C.txt", 
-		"D.txt", "E.txt", 
-		"F.txt"};
+		"STR/Main.txt", "STR/A.txt", 
+		"STR/B.txt", "STR/C.txt", 
+		"STR/D.txt", "STR/E.txt", 
+		"STR/F.txt"};
 
 	std::fstream File(Root[root - 1]);
 
