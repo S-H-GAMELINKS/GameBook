@@ -8,7 +8,11 @@ std::vector<std::string> Script;
 //スクリプト読込関数
 void ScriptRead(int root) {
 
-	const char* Root[] = {"Main.txt", "A.txt", "B.txt", "C.txt", "D.txt", "E.txt", "F.txt"};
+	const char* Root[] = {
+		"Main.txt", "A.txt", 
+		"B.txt", "C.txt", 
+		"D.txt", "E.txt", 
+		"F.txt"};
 
 	std::fstream File(Root[root - 1]);
 
@@ -19,6 +23,10 @@ void ScriptRead(int root) {
 //スクリプト描画関数
 void ScriptDraw() {
 	for (auto&& s : Script) {
+
+		if (s == "END")
+			break;
+
 		std::cout << s << std::endl;
 		getchar();
 	}
