@@ -42,6 +42,27 @@ void ChoiceDraw(int root) {
 	std::cout << "2 : " << choice2 << std::endl;
 }
 
+//選択処理関数
+int ScriptChoiceDraw(int root) {
+
+	int RootChoice;
+
+	system("cls");
+	ChoiceDraw(root);
+	std::cin >> RootChoice;
+
+	if (RootChoice == 1) {
+		system("cls");
+		root *= 2;
+		return root;
+	}
+	else {
+		system("cls");
+		root *= 2 + 1;
+		return root;
+	}
+}
+
 //スクリプト描画関数
 int ScriptDraw(int root) {
 
@@ -50,24 +71,16 @@ int ScriptDraw(int root) {
 	for (auto&& s : Script) {
 
 		if (s == "CHOICE") {
-			system("cls");
-			ChoiceDraw(root);
-			std::cin >> RootChoice;
-
-			if (RootChoice == 1) {
-				root *= 2;
-				return root;
-			} else {
-				root *= 2 + 1;
-				return root;
-			}
+			root = ScriptChoiceDraw(root);
+			return root;
 		}
-
-		if (s == "END")
+		else if (s == "END") {
 			return root = 99;
-
-		std::cout << s << std::endl;
-		getchar();
+		}
+		else {
+			std::cout << s << std::endl;
+			getchar();
+		}
 	}
 }
 
