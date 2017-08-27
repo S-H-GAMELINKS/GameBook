@@ -21,6 +21,8 @@ void ScriptRead(int root) {
 
 	for (std::string s; std::getline(File, s); )
 		Script.emplace_back(std::move(s));
+
+	File.close();
 }
 
 //‘I‘ğˆ•`‰æŠÖ”
@@ -40,6 +42,9 @@ void ChoiceDraw(int root) {
 
 	std::cout << "1 : " << choice1 << std::endl;
 	std::cout << "2 : " << choice2 << std::endl;
+
+	File1.close();
+	File2.close();
 }
 
 //‘I‘ğˆ—ŠÖ”
@@ -71,8 +76,7 @@ int ScriptDraw(int root) {
 	for (auto&& s : Script) {
 
 		if (s == "CHOICE") {
-			root = ScriptChoiceDraw(root);
-			return root;
+			return root = ScriptChoiceDraw(root);
 		}
 		else if (s == "END") {
 			return root = 99;
